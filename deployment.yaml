@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: my-app-deployment
+  name: my-app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: my-app-deployment
+  template:
+    metadata:
+      labels:
+        app: my-app-deployment
+    spec:
+      containers:
+        - image: ghcr.io/tjharwin/my_app:master
+          imagePullPolicy: Always
+          name: "my-app-something"
+          env:
+            - name: SECRET_KEY_BASE
+              value: "fqaFfGNACxXQzXkKXMvrLXGbSdreKquUWjqBFnUHsQ012wsg+c+7o0+b9X0RTuU3"
+      restartPolicy: Always
